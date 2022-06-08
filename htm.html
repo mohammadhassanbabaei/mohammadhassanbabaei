@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>fall in darckness</h1>
+ <form action="" id="formm">
+   <input type="text" name="add_product">
+
+
+   
+   <input type="submit" >
+   <input type="text" placeholder="search" id="seRCH">
+ </form>
+
+ <div></div>
+
+ <script>
+
+   const listproduct=[]
+    document.querySelector("#formm").addEventListener("submit",e=>{
+      e.preventDefault()
+       const ss=e.target.elements.add_product.value
+        listproduct.push({title:ss,exist:true})
+    })
+
+
+
+
+        function segmention(listproduct,filtered){
+         const arrye= listproduct.filter(e=>{
+            return e.title.includes(filtered.valueoffilter)
+          })
+          document.querySelector("div").innerHTML=""
+          arrye.forEach(e => {
+            const ee=document.createElement("p")
+          ee.textContent=e.title
+          document.querySelector("div").appendChild(ee)
+          });
+        }
+    const filtered={
+      valueoffilter:""
+    }
+    document.querySelector("#seRCH").addEventListener("input",e=>{
+        filtered.valueoffilter==e.target.value
+        segmention(listproduct,filtered)
+    })
+
+ </script>
+</body>
+</html>
